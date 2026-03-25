@@ -1,0 +1,1593 @@
+port: 7890
+socks-port: 7891
+allow-lan: false
+mode: rule
+log-level: info
+geodata-mode: true
+geo-auto-update: true
+geodata-loader: standard
+geo-update-interval: 24
+geox-url:
+  geoip: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.dat
+  geosite: >-
+    https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite.dat
+  mmdb: >-
+    https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/country.mmdb
+  asn: >-
+    https://github.com/xishang0128/geoip/releases/download/latest/GeoLite2-ASN.mmdb
+rule-providers:
+  category-ai-!cn:
+    type: http
+    format: mrs
+    behavior: domain
+    url: >-
+      https://gh-proxy.com/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/category-ai-!cn.mrs
+    path: ./ruleset/category-ai-!cn.mrs
+    interval: 86400
+  youtube:
+    type: http
+    format: mrs
+    behavior: domain
+    url: >-
+      https://gh-proxy.com/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/youtube.mrs
+    path: ./ruleset/youtube.mrs
+    interval: 86400
+  google:
+    type: http
+    format: mrs
+    behavior: domain
+    url: >-
+      https://gh-proxy.com/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/google.mrs
+    path: ./ruleset/google.mrs
+    interval: 86400
+  geolocation-cn:
+    type: http
+    format: mrs
+    behavior: domain
+    url: >-
+      https://gh-proxy.com/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/geolocation-cn.mrs
+    path: ./ruleset/geolocation-cn.mrs
+    interval: 86400
+  cn:
+    type: http
+    format: mrs
+    behavior: domain
+    url: >-
+      https://gh-proxy.com/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/cn.mrs
+    path: ./ruleset/cn.mrs
+    interval: 86400
+  github:
+    type: http
+    format: mrs
+    behavior: domain
+    url: >-
+      https://gh-proxy.com/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/github.mrs
+    path: ./ruleset/github.mrs
+    interval: 86400
+  gitlab:
+    type: http
+    format: mrs
+    behavior: domain
+    url: >-
+      https://gh-proxy.com/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/gitlab.mrs
+    path: ./ruleset/gitlab.mrs
+    interval: 86400
+  geolocation-!cn:
+    type: http
+    format: mrs
+    behavior: domain
+    url: >-
+      https://gh-proxy.com/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/geolocation-!cn.mrs
+    path: ./ruleset/geolocation-!cn.mrs
+    interval: 86400
+  google-ip:
+    type: http
+    format: mrs
+    behavior: ipcidr
+    url: >-
+      https://gh-proxy.com/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geoip/google.mrs
+    path: ./ruleset/google-ip.mrs
+    interval: 86400
+  private-ip:
+    type: http
+    format: mrs
+    behavior: ipcidr
+    url: >-
+      https://gh-proxy.com/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geoip/private.mrs
+    path: ./ruleset/private-ip.mrs
+    interval: 86400
+  cn-ip:
+    type: http
+    format: mrs
+    behavior: ipcidr
+    url: >-
+      https://gh-proxy.com/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geoip/cn.mrs
+    path: ./ruleset/cn-ip.mrs
+    interval: 86400
+  telegram-ip:
+    type: http
+    format: mrs
+    behavior: ipcidr
+    url: >-
+      https://gh-proxy.com/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geoip/telegram.mrs
+    path: ./ruleset/telegram-ip.mrs
+    interval: 86400
+dns:
+  enable: true
+  ipv6: true
+  respect-rules: true
+  enhanced-mode: fake-ip
+  nameserver:
+    - https://120.53.53.53/dns-query
+    - https://223.5.5.5/dns-query
+  proxy-server-nameserver:
+    - https://120.53.53.53/dns-query
+    - https://223.5.5.5/dns-query
+  nameserver-policy:
+    geosite:cn,private:
+      - https://120.53.53.53/dns-query
+      - https://223.5.5.5/dns-query
+    geosite:geolocation-!cn:
+      - https://dns.cloudflare.com/dns-query
+      - https://dns.google/dns-query
+proxies:
+  - name: 🇭🇰 香港 06 @pgkj0402
+    type: vless
+    server: 139.196.41.153
+    port: 443
+    uuid: 14b02e2a-8930-4afb-8412-ea4a4954ca5b
+    tls: true
+    servername: ylnhh.cc.cd
+    network: ws
+    ws-opts:
+      path: /gs5=6666:6666@47.239.178.125:6666
+      headers:
+        host: ylnhh.cc.cd
+    tfo: false
+    skip-cert-verify: true
+  - name: 香港-免费6
+    type: vmess
+    server: 148.113.216.61
+    port: 10392
+    uuid: d43eeb9c-91bb-4716-9574-34bc14cde522
+    alterId: 0
+    cipher: auto
+    tls: false
+    servername: ''
+    skip-cert-verify: false
+    network: http
+    http-opts:
+      method: GET
+      path:
+        - /
+  - name: '@pgkj0402 2'
+    type: vless
+    server: bestcf.030101.xyz
+    port: 443
+    uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    tls: true
+    servername: sni.111000.dynv6.net
+    network: ws
+    ws-opts:
+      path: /?ed=2560&proxyip=ip.111000.de5.net:443
+      headers:
+        host: sni.111000.dynv6.net
+    tfo: false
+    skip-cert-verify: true
+  - name: 香港-免费8
+    type: vmess
+    server: 146.59.118.182
+    port: 10442
+    uuid: d43eeb9c-91bb-4716-9574-34bc14cde522
+    alterId: 0
+    cipher: auto
+    tls: false
+    servername: ''
+    skip-cert-verify: false
+    network: http
+    http-opts:
+      method: GET
+      path:
+        - /
+  - name: 香港-免费7
+    type: vmess
+    server: 146.59.118.182
+    port: 10603
+    uuid: d43eeb9c-91bb-4716-9574-34bc14cde522
+    alterId: 0
+    cipher: auto
+    tls: false
+    servername: ''
+    skip-cert-verify: false
+    network: http
+    http-opts:
+      method: GET
+      path:
+        - /
+  - name: 香港-免费4
+    type: vmess
+    server: 51.68.240.35
+    port: 10637
+    uuid: d43eeb9c-91bb-4716-9574-34bc14cde522
+    alterId: 0
+    cipher: auto
+    tls: false
+    servername: ''
+    skip-cert-verify: false
+    network: http
+    http-opts:
+      method: GET
+      path:
+        - /
+  - name: 美国-免费4
+    type: vmess
+    server: 15.204.50.250
+    port: 443
+    uuid: 64c58857-f224-4011-aaf3-5f7915a526b6
+    alterId: 0
+    cipher: auto
+    tls: false
+    servername: ''
+    skip-cert-verify: false
+    network: http
+    http-opts:
+      method: GET
+      path:
+        - /
+  - name: 香港-免费6 2
+    type: vmess
+    server: 57.129.130.23
+    port: 10513
+    uuid: d43eeb9c-91bb-4716-9574-34bc14cde522
+    alterId: 0
+    cipher: auto
+    tls: false
+    servername: ''
+    skip-cert-verify: false
+    network: http
+    http-opts:
+      method: GET
+      path:
+        - /
+  - name: 美国-免费4 2
+    type: vmess
+    server: 15.204.50.250
+    port: 443
+    uuid: f366dc06-32e0-4b1f-bd27-9e6339c11bfe
+    alterId: 0
+    cipher: auto
+    tls: false
+    servername: ''
+    skip-cert-verify: false
+    network: http
+    http-opts:
+      method: GET
+      path:
+        - /
+  - name: '@pgkj0402 3'
+    type: vless
+    server: dns.dressforida.monster
+    port: 443
+    uuid: 79149019-5abe-46f9-91ae-e1e7d1d2c408
+    tls: true
+    client-fingerprint: chrome
+    servername: www.techradar.com
+    network: tcp
+    reality-opts:
+      public-key: 4YLfHf90V012Oyd2wHbwAXaJNvNUGrKWmatTKc165U8
+      short-id: 174c6cf22e22
+    tfo: false
+    skip-cert-verify: false
+    flow: xtls-rprx-vision
+  - name: 🇫🇮 芬兰 | FI-004 @pgkj0402
+    type: vless
+    server: xhtpipw.gfdv54cvghhgfhgj-njhgj64.info
+    port: 443
+    uuid: 221ab711-b458-4044-b9d9-d2f027e5a4e8
+    tls: true
+    servername: Tp099XvO3n.NeWnEwCoMpAnYdOm1.InFo
+    network: xhttp
+    tfo: false
+    skip-cert-verify: true
+  - name: 🇭🇰 香港 | HK-003 @pgkj0402
+    type: trojan
+    server: 54.178.248.68
+    port: 6313
+    password: BxceQaOe
+    tls: true
+    sni: t.me/ripaojiedian
+    network: tcp
+    tfo: false
+    skip-cert-verify: true
+  - name: 美国-免费4 3
+    type: vmess
+    server: 15.204.50.250
+    port: 443
+    uuid: 739d937d-7d66-419d-a6d3-ec8ad831862d
+    alterId: 0
+    cipher: auto
+    tls: false
+    servername: ''
+    skip-cert-verify: false
+    network: http
+    http-opts:
+      method: GET
+      path:
+        - /
+  - name: 🇳🇱NL@pgkj042
+    type: tuic
+    server: ip1.758733.xyz
+    port: 10088
+    uuid: 9bbd1f42-7ae7-4239-bd10-a68de95e3295
+    password: dongtaiwang.com
+    congestion-controller: bbr
+    skip-cert-verify: true
+    alpn:
+      - h3
+    sni: apple.com
+    udp-relay-mode: native
+  - name: 🇳🇱NL@pgkj042 2
+    type: vless
+    server: 138.226.240.199
+    port: 4433
+    uuid: 00000000-0000-4000-8000-000000000000
+    tls: true
+    servername: sub.mot.ip-ddns.com
+    network: ws
+    ws-opts:
+      path: /
+      headers:
+        host: sub.mot.ip-ddns.com
+    tfo: false
+    skip-cert-verify: true
+  - name: 🇫🇮 芬兰 | FI-007 @pgkj888
+    type: vless
+    server: 45.145.42.170
+    port: 8005
+    uuid: 00000000-0000-4000-8000-000000000000
+    tls: true
+    servername: sub.mot.ip-ddns.com
+    network: ws
+    ws-opts:
+      path: /
+      headers:
+        host: sub.mot.ip-ddns.com
+    tfo: false
+    skip-cert-verify: true
+  - name: 德国-免费1
+    type: vmess
+    server: 51.89.11.94
+    port: 443
+    uuid: f13abfec-1cc3-4f1b-bdc2-e2f11c38c8c9
+    alterId: 0
+    cipher: auto
+    tls: false
+    servername: ''
+    skip-cert-verify: false
+    network: http
+    http-opts:
+      method: GET
+      path:
+        - /
+  - name: jp@pgkj0402
+    type: vless
+    server: jp.111000.cc.cd
+    port: 443
+    uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    tls: true
+    servername: sni.111000.dynv6.net
+    network: ws
+    ws-opts:
+      path: /?ed=2560&proxyip=ip.111000.de5.net:443
+      headers:
+        host: sni.111000.dynv6.net
+    tfo: false
+    skip-cert-verify: true
+  - name: 美国-免费12
+    type: vmess
+    server: 107.151.219.211
+    port: 443
+    uuid: 9e7cd2f0-9a55-4033-a204-168477cc2254
+    alterId: 0
+    cipher: auto
+    tls: false
+    servername: ''
+    skip-cert-verify: false
+    network: http
+    http-opts:
+      method: GET
+      path:
+        - /
+  - name: 波兰-免费1
+    type: vmess
+    server: 146.59.118.182
+    port: 443
+    uuid: 8a94752a-814e-4034-b807-c58b9a7c4354
+    alterId: 0
+    cipher: auto
+    tls: false
+    servername: ''
+    skip-cert-verify: false
+    network: http
+    http-opts:
+      method: GET
+      path:
+        - /
+  - name: 英国-免费1
+    type: vmess
+    server: 57.129.130.23
+    port: 443
+    uuid: a120cb7b-c322-436c-af77-6dfbdae19505
+    alterId: 0
+    cipher: auto
+    tls: false
+    servername: ''
+    skip-cert-verify: false
+    network: http
+    http-opts:
+      method: GET
+      path:
+        - /
+  - name: 波兰-免费1 2
+    type: vmess
+    server: 146.59.118.182
+    port: 443
+    uuid: 837080d4-022d-4b00-b739-ad0212d8e51d
+    alterId: 0
+    cipher: auto
+    tls: false
+    servername: ''
+    skip-cert-verify: false
+    network: http
+    http-opts:
+      method: GET
+      path:
+        - /
+  - name: 德国-免费3
+    type: vmess
+    server: 51.89.11.94
+    port: 443
+    uuid: e5408561-3874-4d41-a744-0cd0dfdb86c8
+    alterId: 0
+    cipher: auto
+    tls: false
+    servername: ''
+    skip-cert-verify: false
+    network: http
+    http-opts:
+      method: GET
+      path:
+        - /
+  - name: 波兰-免费1 3
+    type: vmess
+    server: 146.59.118.182
+    port: 443
+    uuid: 0b72f4f7-55f3-4d83-92ae-e391f6523f44
+    alterId: 0
+    cipher: auto
+    tls: false
+    servername: ''
+    skip-cert-verify: false
+    network: http
+    http-opts:
+      method: GET
+      path:
+        - /
+  - name: CN@pgkj042
+    type: vless
+    server: 139.196.41.153
+    port: 443
+    uuid: 14b02e2a-8930-4afb-8412-ea4a4954ca5b
+    tls: true
+    servername: ylnhh.cc.cd
+    network: ws
+    ws-opts:
+      path: /
+    tfo: false
+    skip-cert-verify: true
+  - name: 🇮🇪 爱尔兰 | IE-001 @pgkj0402
+    type: trojan
+    server: 13.231.152.178
+    port: 4019
+    password: 6d29eb2f74293cb01a19b32cf08ad2e9
+    tls: true
+    sni: www.nintendogames.net
+    network: tcp
+    tfo: false
+    skip-cert-verify: true
+  - name: 法国-免费1
+    type: vmess
+    server: 51.68.240.35
+    port: 443
+    uuid: 39d42866-956d-412b-8f61-237f20536964
+    alterId: 0
+    cipher: auto
+    tls: false
+    servername: ''
+    skip-cert-verify: false
+    network: http
+    http-opts:
+      method: GET
+      path:
+        - /
+  - name: jp@pgkj0402 2
+    type: trojan
+    server: jp.111000.cc.cd
+    port: 443
+    password: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    tls: true
+    sni: sni.111000.dynv6.net
+    network: ws
+    ws-opts:
+      path: /?ed=2560&proxyip=ip.111000.de5.net:443
+      headers:
+        host: sni.111000.dynv6.net
+    tfo: false
+    skip-cert-verify: true
+  - name: 法国-免费1 2
+    type: vmess
+    server: 51.68.240.35
+    port: 443
+    uuid: f9913e8f-89bb-4721-b156-870bb6228921
+    alterId: 0
+    cipher: auto
+    tls: false
+    servername: ''
+    skip-cert-verify: false
+    network: http
+    http-opts:
+      method: GET
+      path:
+        - /
+  - name: '@pgkj0402 9'
+    type: trojan
+    server: bestcf.030101.xyz
+    port: 443
+    password: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    tls: true
+    sni: sni.111000.dynv6.net
+    network: ws
+    ws-opts:
+      path: /?ed=2560&proxyip=ip.111000.de5.net:443
+      headers:
+        host: sni.111000.dynv6.net
+    tfo: false
+    skip-cert-verify: true
+  - name: OTHER@pgkj042
+    type: trojan
+    server: 172.66.44.230
+    port: 8443
+    password: 8r<[9'l6hAO#8ZQi
+    tls: true
+    sni: Koma-YT.PAGeS.Dev
+    network: ws
+    ws-opts:
+      path: /tro8sFW1S91B6sZrM1?ed=2560
+      headers:
+        host: Koma-YT.PAGeS.Dev
+    tfo: false
+    skip-cert-verify: true
+  - name: 法国-免费1 3
+    type: vmess
+    server: 51.68.240.35
+    port: 443
+    uuid: 491ce522-7923-41ad-869f-df74539af6e0
+    alterId: 0
+    cipher: auto
+    tls: false
+    servername: ''
+    skip-cert-verify: false
+    network: http
+    http-opts:
+      method: GET
+      path:
+        - /
+  - name: 德国-免费1 2
+    type: vmess
+    server: 51.89.11.94
+    port: 443
+    uuid: bd7ba496-e654-4ece-83db-c434a8270ecf
+    alterId: 0
+    cipher: auto
+    tls: false
+    servername: ''
+    skip-cert-verify: false
+    network: http
+    http-opts:
+      method: GET
+      path:
+        - /
+  - name: 英国-免费1 2
+    type: vmess
+    server: 57.129.130.23
+    port: 443
+    uuid: 5cb525ac-2762-4bc7-be83-206d7c92de33
+    alterId: 0
+    cipher: auto
+    tls: false
+    servername: ''
+    skip-cert-verify: false
+    network: http
+    http-opts:
+      method: GET
+      path:
+        - /
+  - name: 英国-免费1 3
+    type: vmess
+    server: 57.129.130.23
+    port: 443
+    uuid: 34faa20a-7597-444c-81a3-a92042e3cd95
+    alterId: 0
+    cipher: auto
+    tls: false
+    servername: ''
+    skip-cert-verify: false
+    network: http
+    http-opts:
+      method: GET
+      path:
+        - /
+  - name: RU@pgkj042
+    type: vless
+    server: 193.9.49.65
+    port: 443
+    uuid: 9e4f36da-8f61-44f8-a9a7-0fd3a8d81234
+    tls: true
+    servername: r.icy.de5.net
+    network: ws
+    ws-opts:
+      path: /?ed=2560
+      headers:
+        host: r.icy.de5.net
+    tfo: false
+    skip-cert-verify: true
+  - name: OTHER@pgkj042 2
+    type: vless
+    server: 104.19.85.38
+    port: 443
+    uuid: 9e4f36da-8f61-44f8-a9a7-0fd3a8d81234
+    tls: true
+    servername: r.icy.de5.net
+    network: ws
+    ws-opts:
+      path: /?ed=2560
+      headers:
+        host: r.icy.de5.net
+    tfo: false
+    skip-cert-verify: true
+  - name: OTHER@pgkj042 3
+    type: vless
+    server: 104.19.58.74
+    port: 443
+    uuid: 9e4f36da-8f61-44f8-a9a7-0fd3a8d81234
+    tls: true
+    servername: r.icy.de5.net
+    network: ws
+    ws-opts:
+      path: /?ed=2560
+      headers:
+        host: r.icy.de5.net
+    tfo: false
+    skip-cert-verify: true
+  - name: OTHER@pgkj042 4
+    type: vless
+    server: 104.17.28.89
+    port: 443
+    uuid: 9e4f36da-8f61-44f8-a9a7-0fd3a8d81234
+    tls: true
+    servername: r.icy.de5.net
+    network: ws
+    ws-opts:
+      path: /?ed=2560
+      headers:
+        host: r.icy.de5.net
+    tfo: false
+    skip-cert-verify: true
+  - name: 🇸🇬 新加坡 | SG-002 @pgkj0402
+    type: trojan
+    server: 13.192.204.27
+    port: 29666
+    password: BxceQaOe
+    tls: true
+    sni: t.me%2Fripaojiedian
+    network: tcp
+    tfo: false
+    skip-cert-verify: true
+  - name: '@pgkj0402 11'
+    type: vless
+    server: freeyx.cloudflare88.eu.org
+    port: 443
+    uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    tls: true
+    servername: sni.111000.dynv6.net
+    network: ws
+    ws-opts:
+      path: /?ed=2560&proxyip=ip.111000.de5.net:443
+      headers:
+        host: sni.111000.dynv6.net
+    tfo: false
+    skip-cert-verify: true
+  - name: '@pgkj0402 12'
+    type: vless
+    server: saas.sin.fan
+    port: 443
+    uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    tls: true
+    servername: sni.111000.dynv6.net
+    network: ws
+    ws-opts:
+      path: /?ed=2560&proxyip=ip.111000.de5.net:443
+      headers:
+        host: sni.111000.dynv6.net
+    tfo: false
+    skip-cert-verify: true
+  - name: '@pgkj0402 13'
+    type: trojan
+    server: saas.sin.fan
+    port: 443
+    password: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    tls: true
+    sni: sni.111000.dynv6.net
+    network: ws
+    ws-opts:
+      path: /?ed=2560&proxyip=ip.111000.de5.net:443
+      headers:
+        host: sni.111000.dynv6.net
+    tfo: false
+    skip-cert-verify: true
+  - name: OTHER@pgkj042 5
+    type: vless
+    server: 104.18.41.43
+    port: 443
+    uuid: 9e4f36da-8f61-44f8-a9a7-0fd3a8d81234
+    tls: true
+    servername: r.icy.de5.net
+    network: ws
+    ws-opts:
+      path: /?ed=2560
+      headers:
+        host: r.icy.de5.net
+    tfo: false
+    skip-cert-verify: true
+  - name: OTHER@pgkj042 6
+    type: vless
+    server: 162.159.7.2
+    port: 443
+    uuid: 9e4f36da-8f61-44f8-a9a7-0fd3a8d81234
+    tls: true
+    servername: r.icy.de5.net
+    network: ws
+    ws-opts:
+      path: /?ed=2560
+      headers:
+        host: r.icy.de5.net
+    tfo: false
+    skip-cert-verify: true
+  - name: '@pgkj0402 14'
+    type: trojan
+    server: freeyx.cloudflare88.eu.org
+    port: 443
+    password: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    tls: true
+    sni: sni.111000.dynv6.net
+    network: ws
+    ws-opts:
+      path: /?ed=2560&proxyip=ip.111000.de5.net:443
+      headers:
+        host: sni.111000.dynv6.net
+    tfo: false
+    skip-cert-verify: true
+  - name: OTHER@pgkj042 7
+    type: vless
+    server: 162.159.24.111
+    port: 443
+    uuid: 9e4f36da-8f61-44f8-a9a7-0fd3a8d81234
+    tls: true
+    servername: r.icy.de5.net
+    network: ws
+    ws-opts:
+      path: /?ed=2560
+      headers:
+        host: r.icy.de5.net
+    tfo: false
+    skip-cert-verify: true
+  - name: 🇺🇸_US_美国@pgkj0402
+    type: vless
+    server: vip1.kaixincloud.top
+    port: 443
+    uuid: 9e4f36da-8f61-44f8-a9a7-0fd3a8d81234
+    tls: true
+    servername: r.icy.de5.net
+    network: ws
+    ws-opts:
+      path: /?ed=2560
+      headers:
+        host: r.icy.de5.net
+    tfo: false
+    skip-cert-verify: true
+  - name: 🇭🇰 香港 | HK-001 @pgkj0402
+    type: trojan
+    server: 58.152.25.253
+    port: 443
+    password: BxceQaOe
+    tls: true
+    sni: t.me/ripaojiedian
+    network: tcp
+    tfo: false
+    skip-cert-verify: true
+  - name: 🇨🇳_CN_中国@pgkj0402
+    type: ss
+    server: hk14.network-cdn-gw-yd.net
+    port: 32062
+    cipher: chacha20-ietf-poly1305
+    password: eb9aff96-654d-4b84-bfbd-30d57a927e4d
+  - name: 🇩🇪_DE_德国@pgkj0402
+    type: vless
+    server: 185.94.29.156
+    port: 4001
+    uuid: 00000000-0000-4000-8000-000000000000
+    tls: true
+    servername: sub.mot.ip-ddns.com
+    network: ws
+    ws-opts:
+      path: /
+      headers:
+        host: sub.mot.ip-ddns.com
+    tfo: false
+    skip-cert-verify: true
+  - name: 🇨🇳_CN_中国@pgkj0402 2
+    type: trojan
+    server: 58.152.25.253
+    port: 443
+    password: BxceQaOe
+    tls: true
+    sni: ''
+    network: tcp
+    tfo: false
+    skip-cert-verify: true
+  - name: 🇺🇸_US_美国@pgkj0402 2
+    type: vless
+    server: 172.64.229.85
+    port: 443
+    uuid: 9e4f36da-8f61-44f8-a9a7-0fd3a8d81234
+    tls: true
+    servername: r.icy.de5.net
+    network: ws
+    ws-opts:
+      path: /?ed=2560
+      headers:
+        host: r.icy.de5.net
+    tfo: false
+    skip-cert-verify: true
+  - name: 🇷🇺_RU_俄罗斯@pgkj0402
+    type: vless
+    server: decdn14.dramatorg.net
+    port: 443
+    uuid: 576993a0-3b23-4c65-8c6d-2165b098826b
+    tls: true
+    servername: decdn14.dramatorg.net
+    network: tcp
+    tfo: false
+    skip-cert-verify: true
+  - name: 🇨🇳_CN_中国->🇸🇬_SG_新加坡@pgkj0402
+    type: vmess
+    server: v12.hdacd.com
+    port: 30812
+    uuid: cbb3f877-d1fb-344c-87a9-d153bffd5484
+    alterId: 0
+    cipher: auto
+    tls: false
+    servername: ''
+    skip-cert-verify: false
+    network: tcp
+  - name: 🇺🇸_US_美国@pgkj0402 3
+    type: vless
+    server: vip2.kaixincloud.top
+    port: 443
+    uuid: 9e4f36da-8f61-44f8-a9a7-0fd3a8d81234
+    tls: true
+    servername: r.icy.de5.net
+    network: ws
+    ws-opts:
+      path: /?ed=2560
+      headers:
+        host: r.icy.de5.net
+    tfo: false
+    skip-cert-verify: true
+proxy-groups:
+  - type: select
+    name: 🚀 Node Select
+    proxies:
+      - ⚡ Auto Select
+      - 🇭🇰 香港 06 @pgkj0402
+      - 香港-免费6
+      - '@pgkj0402 2'
+      - 香港-免费8
+      - 香港-免费7
+      - 香港-免费4
+      - 美国-免费4
+      - 香港-免费6 2
+      - 美国-免费4 2
+      - '@pgkj0402 3'
+      - 🇫🇮 芬兰 | FI-004 @pgkj0402
+      - 🇭🇰 香港 | HK-003 @pgkj0402
+      - 美国-免费4 3
+      - 🇳🇱NL@pgkj042
+      - 🇳🇱NL@pgkj042 2
+      - 🇫🇮 芬兰 | FI-007 @pgkj888
+      - 德国-免费1
+      - jp@pgkj0402
+      - 美国-免费12
+      - 波兰-免费1
+      - 英国-免费1
+      - 波兰-免费1 2
+      - 德国-免费3
+      - 波兰-免费1 3
+      - CN@pgkj042
+      - 🇮🇪 爱尔兰 | IE-001 @pgkj0402
+      - 法国-免费1
+      - jp@pgkj0402 2
+      - 法国-免费1 2
+      - '@pgkj0402 9'
+      - OTHER@pgkj042
+      - 法国-免费1 3
+      - 德国-免费1 2
+      - 英国-免费1 2
+      - 英国-免费1 3
+      - RU@pgkj042
+      - OTHER@pgkj042 2
+      - OTHER@pgkj042 3
+      - OTHER@pgkj042 4
+      - 🇸🇬 新加坡 | SG-002 @pgkj0402
+      - '@pgkj0402 11'
+      - '@pgkj0402 12'
+      - '@pgkj0402 13'
+      - OTHER@pgkj042 5
+      - OTHER@pgkj042 6
+      - '@pgkj0402 14'
+      - OTHER@pgkj042 7
+      - 🇺🇸_US_美国@pgkj0402
+      - 🇭🇰 香港 | HK-001 @pgkj0402
+      - 🇨🇳_CN_中国@pgkj0402
+      - 🇩🇪_DE_德国@pgkj0402
+      - 🇨🇳_CN_中国@pgkj0402 2
+      - 🇺🇸_US_美国@pgkj0402 2
+      - 🇷🇺_RU_俄罗斯@pgkj0402
+      - 🇨🇳_CN_中国->🇸🇬_SG_新加坡@pgkj0402
+      - 🇺🇸_US_美国@pgkj0402 3
+      - DIRECT
+      - REJECT
+  - name: ⚡ Auto Select
+    type: url-test
+    proxies:
+      - 🇭🇰 香港 06 @pgkj0402
+      - 香港-免费6
+      - '@pgkj0402 2'
+      - 香港-免费8
+      - 香港-免费7
+      - 香港-免费4
+      - 美国-免费4
+      - 香港-免费6 2
+      - 美国-免费4 2
+      - '@pgkj0402 3'
+      - 🇫🇮 芬兰 | FI-004 @pgkj0402
+      - 🇭🇰 香港 | HK-003 @pgkj0402
+      - 美国-免费4 3
+      - 🇳🇱NL@pgkj042
+      - 🇳🇱NL@pgkj042 2
+      - 🇫🇮 芬兰 | FI-007 @pgkj888
+      - 德国-免费1
+      - jp@pgkj0402
+      - 美国-免费12
+      - 波兰-免费1
+      - 英国-免费1
+      - 波兰-免费1 2
+      - 德国-免费3
+      - 波兰-免费1 3
+      - CN@pgkj042
+      - 🇮🇪 爱尔兰 | IE-001 @pgkj0402
+      - 法国-免费1
+      - jp@pgkj0402 2
+      - 法国-免费1 2
+      - '@pgkj0402 9'
+      - OTHER@pgkj042
+      - 法国-免费1 3
+      - 德国-免费1 2
+      - 英国-免费1 2
+      - 英国-免费1 3
+      - RU@pgkj042
+      - OTHER@pgkj042 2
+      - OTHER@pgkj042 3
+      - OTHER@pgkj042 4
+      - 🇸🇬 新加坡 | SG-002 @pgkj0402
+      - '@pgkj0402 11'
+      - '@pgkj0402 12'
+      - '@pgkj0402 13'
+      - OTHER@pgkj042 5
+      - OTHER@pgkj042 6
+      - '@pgkj0402 14'
+      - OTHER@pgkj042 7
+      - 🇺🇸_US_美国@pgkj0402
+      - 🇭🇰 香港 | HK-001 @pgkj0402
+      - 🇨🇳_CN_中国@pgkj0402
+      - 🇩🇪_DE_德国@pgkj0402
+      - 🇨🇳_CN_中国@pgkj0402 2
+      - 🇺🇸_US_美国@pgkj0402 2
+      - 🇷🇺_RU_俄罗斯@pgkj0402
+      - 🇨🇳_CN_中国->🇸🇬_SG_新加坡@pgkj0402
+      - 🇺🇸_US_美国@pgkj0402 3
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    lazy: false
+  - type: select
+    name: 💬 AI Services
+    proxies:
+      - 🚀 Node Select
+      - 🇭🇰 香港 06 @pgkj0402
+      - 香港-免费6
+      - '@pgkj0402 2'
+      - 香港-免费8
+      - 香港-免费7
+      - 香港-免费4
+      - 美国-免费4
+      - 香港-免费6 2
+      - 美国-免费4 2
+      - '@pgkj0402 3'
+      - 🇫🇮 芬兰 | FI-004 @pgkj0402
+      - 🇭🇰 香港 | HK-003 @pgkj0402
+      - 美国-免费4 3
+      - 🇳🇱NL@pgkj042
+      - 🇳🇱NL@pgkj042 2
+      - 🇫🇮 芬兰 | FI-007 @pgkj888
+      - 德国-免费1
+      - jp@pgkj0402
+      - 美国-免费12
+      - 波兰-免费1
+      - 英国-免费1
+      - 波兰-免费1 2
+      - 德国-免费3
+      - 波兰-免费1 3
+      - CN@pgkj042
+      - 🇮🇪 爱尔兰 | IE-001 @pgkj0402
+      - 法国-免费1
+      - jp@pgkj0402 2
+      - 法国-免费1 2
+      - '@pgkj0402 9'
+      - OTHER@pgkj042
+      - 法国-免费1 3
+      - 德国-免费1 2
+      - 英国-免费1 2
+      - 英国-免费1 3
+      - RU@pgkj042
+      - OTHER@pgkj042 2
+      - OTHER@pgkj042 3
+      - OTHER@pgkj042 4
+      - 🇸🇬 新加坡 | SG-002 @pgkj0402
+      - '@pgkj0402 11'
+      - '@pgkj0402 12'
+      - '@pgkj0402 13'
+      - OTHER@pgkj042 5
+      - OTHER@pgkj042 6
+      - '@pgkj0402 14'
+      - OTHER@pgkj042 7
+      - 🇺🇸_US_美国@pgkj0402
+      - 🇭🇰 香港 | HK-001 @pgkj0402
+      - 🇨🇳_CN_中国@pgkj0402
+      - 🇩🇪_DE_德国@pgkj0402
+      - 🇨🇳_CN_中国@pgkj0402 2
+      - 🇺🇸_US_美国@pgkj0402 2
+      - 🇷🇺_RU_俄罗斯@pgkj0402
+      - 🇨🇳_CN_中国->🇸🇬_SG_新加坡@pgkj0402
+      - 🇺🇸_US_美国@pgkj0402 3
+      - DIRECT
+      - REJECT
+  - type: select
+    name: 📹 Youtube
+    proxies:
+      - 🚀 Node Select
+      - 🇭🇰 香港 06 @pgkj0402
+      - 香港-免费6
+      - '@pgkj0402 2'
+      - 香港-免费8
+      - 香港-免费7
+      - 香港-免费4
+      - 美国-免费4
+      - 香港-免费6 2
+      - 美国-免费4 2
+      - '@pgkj0402 3'
+      - 🇫🇮 芬兰 | FI-004 @pgkj0402
+      - 🇭🇰 香港 | HK-003 @pgkj0402
+      - 美国-免费4 3
+      - 🇳🇱NL@pgkj042
+      - 🇳🇱NL@pgkj042 2
+      - 🇫🇮 芬兰 | FI-007 @pgkj888
+      - 德国-免费1
+      - jp@pgkj0402
+      - 美国-免费12
+      - 波兰-免费1
+      - 英国-免费1
+      - 波兰-免费1 2
+      - 德国-免费3
+      - 波兰-免费1 3
+      - CN@pgkj042
+      - 🇮🇪 爱尔兰 | IE-001 @pgkj0402
+      - 法国-免费1
+      - jp@pgkj0402 2
+      - 法国-免费1 2
+      - '@pgkj0402 9'
+      - OTHER@pgkj042
+      - 法国-免费1 3
+      - 德国-免费1 2
+      - 英国-免费1 2
+      - 英国-免费1 3
+      - RU@pgkj042
+      - OTHER@pgkj042 2
+      - OTHER@pgkj042 3
+      - OTHER@pgkj042 4
+      - 🇸🇬 新加坡 | SG-002 @pgkj0402
+      - '@pgkj0402 11'
+      - '@pgkj0402 12'
+      - '@pgkj0402 13'
+      - OTHER@pgkj042 5
+      - OTHER@pgkj042 6
+      - '@pgkj0402 14'
+      - OTHER@pgkj042 7
+      - 🇺🇸_US_美国@pgkj0402
+      - 🇭🇰 香港 | HK-001 @pgkj0402
+      - 🇨🇳_CN_中国@pgkj0402
+      - 🇩🇪_DE_德国@pgkj0402
+      - 🇨🇳_CN_中国@pgkj0402 2
+      - 🇺🇸_US_美国@pgkj0402 2
+      - 🇷🇺_RU_俄罗斯@pgkj0402
+      - 🇨🇳_CN_中国->🇸🇬_SG_新加坡@pgkj0402
+      - 🇺🇸_US_美国@pgkj0402 3
+      - DIRECT
+      - REJECT
+  - type: select
+    name: 🔍 Google Services
+    proxies:
+      - 🚀 Node Select
+      - 🇭🇰 香港 06 @pgkj0402
+      - 香港-免费6
+      - '@pgkj0402 2'
+      - 香港-免费8
+      - 香港-免费7
+      - 香港-免费4
+      - 美国-免费4
+      - 香港-免费6 2
+      - 美国-免费4 2
+      - '@pgkj0402 3'
+      - 🇫🇮 芬兰 | FI-004 @pgkj0402
+      - 🇭🇰 香港 | HK-003 @pgkj0402
+      - 美国-免费4 3
+      - 🇳🇱NL@pgkj042
+      - 🇳🇱NL@pgkj042 2
+      - 🇫🇮 芬兰 | FI-007 @pgkj888
+      - 德国-免费1
+      - jp@pgkj0402
+      - 美国-免费12
+      - 波兰-免费1
+      - 英国-免费1
+      - 波兰-免费1 2
+      - 德国-免费3
+      - 波兰-免费1 3
+      - CN@pgkj042
+      - 🇮🇪 爱尔兰 | IE-001 @pgkj0402
+      - 法国-免费1
+      - jp@pgkj0402 2
+      - 法国-免费1 2
+      - '@pgkj0402 9'
+      - OTHER@pgkj042
+      - 法国-免费1 3
+      - 德国-免费1 2
+      - 英国-免费1 2
+      - 英国-免费1 3
+      - RU@pgkj042
+      - OTHER@pgkj042 2
+      - OTHER@pgkj042 3
+      - OTHER@pgkj042 4
+      - 🇸🇬 新加坡 | SG-002 @pgkj0402
+      - '@pgkj0402 11'
+      - '@pgkj0402 12'
+      - '@pgkj0402 13'
+      - OTHER@pgkj042 5
+      - OTHER@pgkj042 6
+      - '@pgkj0402 14'
+      - OTHER@pgkj042 7
+      - 🇺🇸_US_美国@pgkj0402
+      - 🇭🇰 香港 | HK-001 @pgkj0402
+      - 🇨🇳_CN_中国@pgkj0402
+      - 🇩🇪_DE_德国@pgkj0402
+      - 🇨🇳_CN_中国@pgkj0402 2
+      - 🇺🇸_US_美国@pgkj0402 2
+      - 🇷🇺_RU_俄罗斯@pgkj0402
+      - 🇨🇳_CN_中国->🇸🇬_SG_新加坡@pgkj0402
+      - 🇺🇸_US_美国@pgkj0402 3
+      - DIRECT
+      - REJECT
+  - type: select
+    name: 🏠 Private Network
+    proxies:
+      - DIRECT
+      - 🚀 Node Select
+      - 🇭🇰 香港 06 @pgkj0402
+      - 香港-免费6
+      - '@pgkj0402 2'
+      - 香港-免费8
+      - 香港-免费7
+      - 香港-免费4
+      - 美国-免费4
+      - 香港-免费6 2
+      - 美国-免费4 2
+      - '@pgkj0402 3'
+      - 🇫🇮 芬兰 | FI-004 @pgkj0402
+      - 🇭🇰 香港 | HK-003 @pgkj0402
+      - 美国-免费4 3
+      - 🇳🇱NL@pgkj042
+      - 🇳🇱NL@pgkj042 2
+      - 🇫🇮 芬兰 | FI-007 @pgkj888
+      - 德国-免费1
+      - jp@pgkj0402
+      - 美国-免费12
+      - 波兰-免费1
+      - 英国-免费1
+      - 波兰-免费1 2
+      - 德国-免费3
+      - 波兰-免费1 3
+      - CN@pgkj042
+      - 🇮🇪 爱尔兰 | IE-001 @pgkj0402
+      - 法国-免费1
+      - jp@pgkj0402 2
+      - 法国-免费1 2
+      - '@pgkj0402 9'
+      - OTHER@pgkj042
+      - 法国-免费1 3
+      - 德国-免费1 2
+      - 英国-免费1 2
+      - 英国-免费1 3
+      - RU@pgkj042
+      - OTHER@pgkj042 2
+      - OTHER@pgkj042 3
+      - OTHER@pgkj042 4
+      - 🇸🇬 新加坡 | SG-002 @pgkj0402
+      - '@pgkj0402 11'
+      - '@pgkj0402 12'
+      - '@pgkj0402 13'
+      - OTHER@pgkj042 5
+      - OTHER@pgkj042 6
+      - '@pgkj0402 14'
+      - OTHER@pgkj042 7
+      - 🇺🇸_US_美国@pgkj0402
+      - 🇭🇰 香港 | HK-001 @pgkj0402
+      - 🇨🇳_CN_中国@pgkj0402
+      - 🇩🇪_DE_德国@pgkj0402
+      - 🇨🇳_CN_中国@pgkj0402 2
+      - 🇺🇸_US_美国@pgkj0402 2
+      - 🇷🇺_RU_俄罗斯@pgkj0402
+      - 🇨🇳_CN_中国->🇸🇬_SG_新加坡@pgkj0402
+      - 🇺🇸_US_美国@pgkj0402 3
+      - REJECT
+  - type: select
+    name: 🔒 China Services
+    proxies:
+      - DIRECT
+      - 🚀 Node Select
+      - 🇭🇰 香港 06 @pgkj0402
+      - 香港-免费6
+      - '@pgkj0402 2'
+      - 香港-免费8
+      - 香港-免费7
+      - 香港-免费4
+      - 美国-免费4
+      - 香港-免费6 2
+      - 美国-免费4 2
+      - '@pgkj0402 3'
+      - 🇫🇮 芬兰 | FI-004 @pgkj0402
+      - 🇭🇰 香港 | HK-003 @pgkj0402
+      - 美国-免费4 3
+      - 🇳🇱NL@pgkj042
+      - 🇳🇱NL@pgkj042 2
+      - 🇫🇮 芬兰 | FI-007 @pgkj888
+      - 德国-免费1
+      - jp@pgkj0402
+      - 美国-免费12
+      - 波兰-免费1
+      - 英国-免费1
+      - 波兰-免费1 2
+      - 德国-免费3
+      - 波兰-免费1 3
+      - CN@pgkj042
+      - 🇮🇪 爱尔兰 | IE-001 @pgkj0402
+      - 法国-免费1
+      - jp@pgkj0402 2
+      - 法国-免费1 2
+      - '@pgkj0402 9'
+      - OTHER@pgkj042
+      - 法国-免费1 3
+      - 德国-免费1 2
+      - 英国-免费1 2
+      - 英国-免费1 3
+      - RU@pgkj042
+      - OTHER@pgkj042 2
+      - OTHER@pgkj042 3
+      - OTHER@pgkj042 4
+      - 🇸🇬 新加坡 | SG-002 @pgkj0402
+      - '@pgkj0402 11'
+      - '@pgkj0402 12'
+      - '@pgkj0402 13'
+      - OTHER@pgkj042 5
+      - OTHER@pgkj042 6
+      - '@pgkj0402 14'
+      - OTHER@pgkj042 7
+      - 🇺🇸_US_美国@pgkj0402
+      - 🇭🇰 香港 | HK-001 @pgkj0402
+      - 🇨🇳_CN_中国@pgkj0402
+      - 🇩🇪_DE_德国@pgkj0402
+      - 🇨🇳_CN_中国@pgkj0402 2
+      - 🇺🇸_US_美国@pgkj0402 2
+      - 🇷🇺_RU_俄罗斯@pgkj0402
+      - 🇨🇳_CN_中国->🇸🇬_SG_新加坡@pgkj0402
+      - 🇺🇸_US_美国@pgkj0402 3
+      - REJECT
+  - type: select
+    name: 📲 Telegram
+    proxies:
+      - 🚀 Node Select
+      - 🇭🇰 香港 06 @pgkj0402
+      - 香港-免费6
+      - '@pgkj0402 2'
+      - 香港-免费8
+      - 香港-免费7
+      - 香港-免费4
+      - 美国-免费4
+      - 香港-免费6 2
+      - 美国-免费4 2
+      - '@pgkj0402 3'
+      - 🇫🇮 芬兰 | FI-004 @pgkj0402
+      - 🇭🇰 香港 | HK-003 @pgkj0402
+      - 美国-免费4 3
+      - 🇳🇱NL@pgkj042
+      - 🇳🇱NL@pgkj042 2
+      - 🇫🇮 芬兰 | FI-007 @pgkj888
+      - 德国-免费1
+      - jp@pgkj0402
+      - 美国-免费12
+      - 波兰-免费1
+      - 英国-免费1
+      - 波兰-免费1 2
+      - 德国-免费3
+      - 波兰-免费1 3
+      - CN@pgkj042
+      - 🇮🇪 爱尔兰 | IE-001 @pgkj0402
+      - 法国-免费1
+      - jp@pgkj0402 2
+      - 法国-免费1 2
+      - '@pgkj0402 9'
+      - OTHER@pgkj042
+      - 法国-免费1 3
+      - 德国-免费1 2
+      - 英国-免费1 2
+      - 英国-免费1 3
+      - RU@pgkj042
+      - OTHER@pgkj042 2
+      - OTHER@pgkj042 3
+      - OTHER@pgkj042 4
+      - 🇸🇬 新加坡 | SG-002 @pgkj0402
+      - '@pgkj0402 11'
+      - '@pgkj0402 12'
+      - '@pgkj0402 13'
+      - OTHER@pgkj042 5
+      - OTHER@pgkj042 6
+      - '@pgkj0402 14'
+      - OTHER@pgkj042 7
+      - 🇺🇸_US_美国@pgkj0402
+      - 🇭🇰 香港 | HK-001 @pgkj0402
+      - 🇨🇳_CN_中国@pgkj0402
+      - 🇩🇪_DE_德国@pgkj0402
+      - 🇨🇳_CN_中国@pgkj0402 2
+      - 🇺🇸_US_美国@pgkj0402 2
+      - 🇷🇺_RU_俄罗斯@pgkj0402
+      - 🇨🇳_CN_中国->🇸🇬_SG_新加坡@pgkj0402
+      - 🇺🇸_US_美国@pgkj0402 3
+      - DIRECT
+      - REJECT
+  - type: select
+    name: 🐱 Github
+    proxies:
+      - 🚀 Node Select
+      - 🇭🇰 香港 06 @pgkj0402
+      - 香港-免费6
+      - '@pgkj0402 2'
+      - 香港-免费8
+      - 香港-免费7
+      - 香港-免费4
+      - 美国-免费4
+      - 香港-免费6 2
+      - 美国-免费4 2
+      - '@pgkj0402 3'
+      - 🇫🇮 芬兰 | FI-004 @pgkj0402
+      - 🇭🇰 香港 | HK-003 @pgkj0402
+      - 美国-免费4 3
+      - 🇳🇱NL@pgkj042
+      - 🇳🇱NL@pgkj042 2
+      - 🇫🇮 芬兰 | FI-007 @pgkj888
+      - 德国-免费1
+      - jp@pgkj0402
+      - 美国-免费12
+      - 波兰-免费1
+      - 英国-免费1
+      - 波兰-免费1 2
+      - 德国-免费3
+      - 波兰-免费1 3
+      - CN@pgkj042
+      - 🇮🇪 爱尔兰 | IE-001 @pgkj0402
+      - 法国-免费1
+      - jp@pgkj0402 2
+      - 法国-免费1 2
+      - '@pgkj0402 9'
+      - OTHER@pgkj042
+      - 法国-免费1 3
+      - 德国-免费1 2
+      - 英国-免费1 2
+      - 英国-免费1 3
+      - RU@pgkj042
+      - OTHER@pgkj042 2
+      - OTHER@pgkj042 3
+      - OTHER@pgkj042 4
+      - 🇸🇬 新加坡 | SG-002 @pgkj0402
+      - '@pgkj0402 11'
+      - '@pgkj0402 12'
+      - '@pgkj0402 13'
+      - OTHER@pgkj042 5
+      - OTHER@pgkj042 6
+      - '@pgkj0402 14'
+      - OTHER@pgkj042 7
+      - 🇺🇸_US_美国@pgkj0402
+      - 🇭🇰 香港 | HK-001 @pgkj0402
+      - 🇨🇳_CN_中国@pgkj0402
+      - 🇩🇪_DE_德国@pgkj0402
+      - 🇨🇳_CN_中国@pgkj0402 2
+      - 🇺🇸_US_美国@pgkj0402 2
+      - 🇷🇺_RU_俄罗斯@pgkj0402
+      - 🇨🇳_CN_中国->🇸🇬_SG_新加坡@pgkj0402
+      - 🇺🇸_US_美国@pgkj0402 3
+      - DIRECT
+      - REJECT
+  - type: select
+    name: 🌐 Non-China
+    proxies:
+      - 🚀 Node Select
+      - 🇭🇰 香港 06 @pgkj0402
+      - 香港-免费6
+      - '@pgkj0402 2'
+      - 香港-免费8
+      - 香港-免费7
+      - 香港-免费4
+      - 美国-免费4
+      - 香港-免费6 2
+      - 美国-免费4 2
+      - '@pgkj0402 3'
+      - 🇫🇮 芬兰 | FI-004 @pgkj0402
+      - 🇭🇰 香港 | HK-003 @pgkj0402
+      - 美国-免费4 3
+      - 🇳🇱NL@pgkj042
+      - 🇳🇱NL@pgkj042 2
+      - 🇫🇮 芬兰 | FI-007 @pgkj888
+      - 德国-免费1
+      - jp@pgkj0402
+      - 美国-免费12
+      - 波兰-免费1
+      - 英国-免费1
+      - 波兰-免费1 2
+      - 德国-免费3
+      - 波兰-免费1 3
+      - CN@pgkj042
+      - 🇮🇪 爱尔兰 | IE-001 @pgkj0402
+      - 法国-免费1
+      - jp@pgkj0402 2
+      - 法国-免费1 2
+      - '@pgkj0402 9'
+      - OTHER@pgkj042
+      - 法国-免费1 3
+      - 德国-免费1 2
+      - 英国-免费1 2
+      - 英国-免费1 3
+      - RU@pgkj042
+      - OTHER@pgkj042 2
+      - OTHER@pgkj042 3
+      - OTHER@pgkj042 4
+      - 🇸🇬 新加坡 | SG-002 @pgkj0402
+      - '@pgkj0402 11'
+      - '@pgkj0402 12'
+      - '@pgkj0402 13'
+      - OTHER@pgkj042 5
+      - OTHER@pgkj042 6
+      - '@pgkj0402 14'
+      - OTHER@pgkj042 7
+      - 🇺🇸_US_美国@pgkj0402
+      - 🇭🇰 香港 | HK-001 @pgkj0402
+      - 🇨🇳_CN_中国@pgkj0402
+      - 🇩🇪_DE_德国@pgkj0402
+      - 🇨🇳_CN_中国@pgkj0402 2
+      - 🇺🇸_US_美国@pgkj0402 2
+      - 🇷🇺_RU_俄罗斯@pgkj0402
+      - 🇨🇳_CN_中国->🇸🇬_SG_新加坡@pgkj0402
+      - 🇺🇸_US_美国@pgkj0402 3
+      - DIRECT
+      - REJECT
+  - type: select
+    name: 🐟 Fall Back
+    proxies:
+      - 🚀 Node Select
+      - 🇭🇰 香港 06 @pgkj0402
+      - 香港-免费6
+      - '@pgkj0402 2'
+      - 香港-免费8
+      - 香港-免费7
+      - 香港-免费4
+      - 美国-免费4
+      - 香港-免费6 2
+      - 美国-免费4 2
+      - '@pgkj0402 3'
+      - 🇫🇮 芬兰 | FI-004 @pgkj0402
+      - 🇭🇰 香港 | HK-003 @pgkj0402
+      - 美国-免费4 3
+      - 🇳🇱NL@pgkj042
+      - 🇳🇱NL@pgkj042 2
+      - 🇫🇮 芬兰 | FI-007 @pgkj888
+      - 德国-免费1
+      - jp@pgkj0402
+      - 美国-免费12
+      - 波兰-免费1
+      - 英国-免费1
+      - 波兰-免费1 2
+      - 德国-免费3
+      - 波兰-免费1 3
+      - CN@pgkj042
+      - 🇮🇪 爱尔兰 | IE-001 @pgkj0402
+      - 法国-免费1
+      - jp@pgkj0402 2
+      - 法国-免费1 2
+      - '@pgkj0402 9'
+      - OTHER@pgkj042
+      - 法国-免费1 3
+      - 德国-免费1 2
+      - 英国-免费1 2
+      - 英国-免费1 3
+      - RU@pgkj042
+      - OTHER@pgkj042 2
+      - OTHER@pgkj042 3
+      - OTHER@pgkj042 4
+      - 🇸🇬 新加坡 | SG-002 @pgkj0402
+      - '@pgkj0402 11'
+      - '@pgkj0402 12'
+      - '@pgkj0402 13'
+      - OTHER@pgkj042 5
+      - OTHER@pgkj042 6
+      - '@pgkj0402 14'
+      - OTHER@pgkj042 7
+      - 🇺🇸_US_美国@pgkj0402
+      - 🇭🇰 香港 | HK-001 @pgkj0402
+      - 🇨🇳_CN_中国@pgkj0402
+      - 🇩🇪_DE_德国@pgkj0402
+      - 🇨🇳_CN_中国@pgkj0402 2
+      - 🇺🇸_US_美国@pgkj0402 2
+      - 🇷🇺_RU_俄罗斯@pgkj0402
+      - 🇨🇳_CN_中国->🇸🇬_SG_新加坡@pgkj0402
+      - 🇺🇸_US_美国@pgkj0402 3
+      - DIRECT
+      - REJECT
+rules:
+  - RULE-SET,category-ai-!cn,💬 AI Services
+  - RULE-SET,youtube,📹 Youtube
+  - RULE-SET,google,🔍 Google Services
+  - RULE-SET,geolocation-cn,🔒 China Services
+  - RULE-SET,cn,🔒 China Services
+  - RULE-SET,github,🐱 Github
+  - RULE-SET,gitlab,🐱 Github
+  - RULE-SET,geolocation-!cn,🌐 Non-China
+  - RULE-SET,google-ip,🔍 Google Services,no-resolve
+  - RULE-SET,private-ip,🏠 Private Network,no-resolve
+  - RULE-SET,cn-ip,🔒 China Services,no-resolve
+  - RULE-SET,telegram-ip,📲 Telegram,no-resolve
+  - MATCH,🐟 Fall Back
